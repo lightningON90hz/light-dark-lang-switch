@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 const About = () => {
   const { t } = useLanguage();
   const [showFunFact, setShowFunFact] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowFunFact(true);
+      setIsAnimating(true);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -23,8 +25,15 @@ const About = () => {
           {t('about.description')}
         </p>
         <div className="text-center">
-          <p className="text-lg text-primary transition-all duration-1000">
-            {showFunFact ? t('about.funFact') : "Did you know I..."}
+          <p className="text-lg text-primary">
+            <span>Did you know I</span>
+            <span 
+              className={`inline-block ml-1 transition-all duration-700 ${
+                isAnimating ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              {showFunFact ? t('about.funFact').split('Did you know I ')[1] : "..."}
+            </span>
           </p>
         </div>
       </div>
