@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-type Language = 'en' | 'es';
+type Language = 'en' | 'ro';
 
 type LanguageContextType = {
   language: Language;
@@ -17,25 +17,27 @@ const translations = {
     'hero.subtitle': 'Full Stack Developer',
     'hero.description': 'I build exceptional digital experiences',
     'about.title': 'About Me',
-    'about.description': 'I\'m a software developer with passion for creating beautiful and functional web applications.',
+    'about.description': "I'm a software developer with passion for creating beautiful and functional web applications.",
+    'about.funFact': 'Did you know I code for fun?',
     'projects.title': 'My Projects',
     'contact.title': 'Get in Touch',
-    'contact.description': 'Have a project in mind? Let\'s talk about it.',
+    'contact.description': "Have a project in mind? Let's talk about it.",
     'contact.button': 'Send Message',
   },
-  es: {
-    'nav.about': 'Sobre Mí',
-    'nav.projects': 'Proyectos',
-    'nav.contact': 'Contacto',
-    'hero.title': 'Hola, soy John Doe',
-    'hero.subtitle': 'Desarrollador Full Stack',
-    'hero.description': 'Construyo experiencias digitales excepcionales',
-    'about.title': 'Sobre Mí',
-    'about.description': 'Soy un desarrollador de software con pasión por crear aplicaciones web hermosas y funcionales.',
-    'projects.title': 'Mis Proyectos',
-    'contact.title': 'Contacto',
-    'contact.description': '¿Tienes un proyecto en mente? Hablemos sobre él.',
-    'contact.button': 'Enviar Mensaje',
+  ro: {
+    'nav.about': 'Despre',
+    'nav.projects': 'Proiecte',
+    'nav.contact': 'Contact',
+    'hero.title': 'Salut, sunt John Doe',
+    'hero.subtitle': 'Dezvoltator Full Stack',
+    'hero.description': 'Construiesc experiențe digitale excepționale',
+    'about.title': 'Despre Mine',
+    'about.description': 'Sunt un dezvoltator software cu pasiune pentru crearea de aplicații web frumoase și funcționale.',
+    'about.funFact': 'Știai că programez pentru distracție?',
+    'projects.title': 'Proiectele Mele',
+    'contact.title': 'Contactează-mă',
+    'contact.description': 'Ai un proiect în minte? Hai să vorbim despre el.',
+    'contact.button': 'Trimite Mesaj',
   },
 };
 
