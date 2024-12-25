@@ -1,5 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { ExternalLink } from "lucide-react";
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -7,18 +8,21 @@ const Projects = () => {
   const projects = [
     {
       title: "Project 1",
-      description: "Description of project 1",
-      image: "/placeholder.svg"
+      description: "Coming Soon",
+      image: "/placeholder.svg",
+      link: "https://project1-url.com"
     },
     {
       title: "Project 2",
-      description: "Description of project 2",
-      image: "/placeholder.svg"
+      description: "Coming Soon",
+      image: "/placeholder.svg",
+      link: "https://project2-url.com"
     },
     {
       title: "Project 3",
-      description: "Description of project 3",
-      image: "/placeholder.svg"
+      description: "Coming Soon",
+      image: "/placeholder.svg",
+      link: "https://project3-url.com"
     }
   ];
 
@@ -30,12 +34,20 @@ const Projects = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden animate-slide-up" style={{
-              animationDelay: `${index * 100}ms`
-            }}>
+            <Card 
+              key={index} 
+              className="overflow-hidden animate-slide-up cursor-pointer group hover:border-primary transition-colors" 
+              style={{
+                animationDelay: `${index * 100}ms`
+              }}
+              onClick={() => window.open(project.link, '_blank')}
+            >
               <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
               <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  {project.title}
+                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </CardTitle>
                 <CardDescription>{project.description}</CardDescription>
               </CardHeader>
             </Card>

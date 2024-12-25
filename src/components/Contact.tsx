@@ -1,10 +1,27 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Mail, Instagram, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
 const Contact = () => {
   const { t } = useLanguage();
+
+  const platforms = [
+    {
+      name: "Email",
+      icon: <Mail className="w-6 h-6" />,
+      link: "mailto:your.email@example.com",
+    },
+    {
+      name: "Discord",
+      icon: <MessageSquare className="w-6 h-6" />,
+      link: "https://discord.gg/your-server",
+    },
+    {
+      name: "Instagram",
+      icon: <Instagram className="w-6 h-6" />,
+      link: "https://instagram.com/your-profile",
+    },
+  ];
 
   return (
     <section id="contact" className="py-20">
@@ -13,17 +30,23 @@ const Contact = () => {
           {t('contact.title')}
         </h2>
         <p className="text-lg text-muted-foreground mb-8 text-center">
-          {t('contact.description')}
+          Let's connect! Find me on any of these platforms
         </p>
         
-        <form className="space-y-6">
-          <Input placeholder="Name" />
-          <Input type="email" placeholder="Email" />
-          <Textarea placeholder="Message" className="min-h-[150px]" />
-          <Button className="w-full">
-            {t('contact.button')}
-          </Button>
-        </form>
+        <div className="flex justify-center gap-6">
+          {platforms.map((platform) => (
+            <Button
+              key={platform.name}
+              variant="outline"
+              size="lg"
+              className="flex items-center gap-2 hover:bg-primary hover:text-primary-foreground"
+              onClick={() => window.open(platform.link, '_blank')}
+            >
+              {platform.icon}
+              {platform.name}
+            </Button>
+          ))}
+        </div>
       </div>
     </section>
   );
