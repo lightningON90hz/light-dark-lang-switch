@@ -1,15 +1,31 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Globe, Moon, Sun } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
   const [isDark, setIsDark] = useState(false);
 
+  useEffect(() => {
+    // Check if dark mode was previously enabled
+    const isDarkStored = localStorage.getItem('darkMode') === 'true';
+    setIsDark(isDarkStored);
+    if (isDarkStored) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
+    const newDarkMode = !isDark;
+    setIsDark(newDarkMode);
+    localStorage.setItem('darkMode', String(newDarkMode));
+    
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   return (
